@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8091bb02ecc6046aa36093c705031f, type: 3}
+  m_Name: Enemy_Normal
+  m_EditorClassIdentifier: 
+  _displayName: Normal
+  _maxHealth: 100
+  _moveSpeed: 2
+  _goldReward: 12
+  _livesDamage: 1
+  _sprite: {fileID: 316800804578750379, guid: f3c08286ca91e7e4fa608802f6684037, type: 3}

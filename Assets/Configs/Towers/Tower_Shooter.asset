@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd356fb9cb6f0c94d8fca8ff2baee5f5, type: 3}
+  m_Name: Tower_Shooter
+  m_EditorClassIdentifier: 
+  _displayName: Tower_Shooter
+  _icon: {fileID: 0}
+  _sprite: {fileID: 5963516022632008071, guid: 716bb358aa9b3ce4c971c7d3844a344e, type: 3}
+  _cost: 50
+  _prefab: {fileID: 0}
+  _attackRadius: 3
+  _damage: 25
+  _fireRate: 1.5
+  _projectileSpeed: 10
