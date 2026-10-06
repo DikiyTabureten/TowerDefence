@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Tower_Shooter
   m_EditorClassIdentifier: 
   _displayName: Tower_Shooter
-  _icon: {fileID: 0}
-  _sprite: {fileID: 5963516022632008071, guid: 716bb358aa9b3ce4c971c7d3844a344e, type: 3}
+  _icon: {fileID: 2687807423023115483, guid: c8378229363d7414fbddce03f8494a59, type: 3}
+  _sprite: {fileID: 21300000, guid: 716bb358aa9b3ce4c971c7d3844a344e, type: 3}
   _cost: 50
-  _prefab: {fileID: 0}
+  _prefab: {fileID: -1006476980020719771, guid: 2da36c1751025bb4f87b9e9549935838, type: 3}
   _attackRadius: 3
   _damage: 25
   _fireRate: 1.5
