@@ -2,6 +2,16 @@ using UnityEngine;
 
 namespace TowerDefense
 {
+    public enum EnemyFacingMode
+    {
+        /// <summary>Rotate the whole sprite towards the next waypoint (top-down art).</summary>
+        RotateTowardsWaypoint,
+        /// <summary>Only mirror the sprite left/right (side-view art).</summary>
+        FlipHorizontally,
+        /// <summary>Never change the sprite's orientation.</summary>
+        None
+    }
+
     [CreateAssetMenu(fileName = "EnemyConfig", menuName = "Tower Defense/Enemy Config")]
     public sealed class EnemyConfig : ScriptableObject
     {
@@ -13,11 +23,22 @@ namespace TowerDefense
         private int _livesDamage = 1;
         [SerializeField] private Sprite _sprite;
 
+        [Header("Facing")]
+        [SerializeField] private EnemyFacingMode _facingMode = EnemyFacingMode.RotateTowardsWaypoint;
+        [SerializeField, Range(-180f, 180f),
+         Tooltip("Which way the character looks in the image: 0 = right, 90 = up, -90 = down, 180 = left.")]
+        private float _spriteFacingAngle = 0f;
+        [SerializeField, Min(0f), Tooltip("Turn speed in degrees per second. 0 = turn instantly.")]
+        private float _turnSpeed = 540f;
+
         public string DisplayName => _displayName;
         public float MaxHealth => _maxHealth;
         public float MoveSpeed => _moveSpeed;
         public int GoldReward => _goldReward;
         public int LivesDamage => _livesDamage;
         public Sprite Sprite => _sprite;
+        public EnemyFacingMode FacingMode => _facingMode;
+        public float SpriteFacingAngle => _spriteFacingAngle;
+        public float TurnSpeed => _turnSpeed;
     }
 }

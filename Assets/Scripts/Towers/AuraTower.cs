@@ -19,7 +19,7 @@ namespace TowerDefense
         private ContactFilter2D _filter;
         private float _scanTimer;
 
-        protected override float GizmoRadius => _auraConfig.EffectRadius;
+        public override float Radius => _auraConfig != null ? _auraConfig.EffectRadius : 0f;
 
         protected abstract LayerMask GetTargetMask(TowerContext context);
         protected abstract void OnAuraInit(TowerConfig config);

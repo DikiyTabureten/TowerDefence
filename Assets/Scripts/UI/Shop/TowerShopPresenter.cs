@@ -109,7 +109,7 @@ namespace TowerDefense
             {
                 case PlacementResult.NotEnoughGold: return "Not enough gold";
                 case PlacementResult.OutsideBuildZone: return "Can't build here";
-                case PlacementResult.CellOccupied: return "This spot is taken";
+                case PlacementResult.ZoneOccupied: return "This spot is taken";
                 default: return string.Empty;
             }
         }

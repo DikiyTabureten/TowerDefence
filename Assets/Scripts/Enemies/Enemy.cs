@@ -47,8 +47,12 @@ namespace TowerDefense
             Health = config.MaxHealth;
             DistanceTravelled = 0f;
             transform.position = _path.GetPoint(0);
+            transform.rotation = Quaternion.identity;
+            _spriteRenderer.flipX = false;
             _nextWaypointIndex = 1;
             _isAlive = true;
+
+            UpdateFacing(instant: true);
         }
 
         private void Update()
@@ -58,7 +62,38 @@ namespace TowerDefense
             Move(CurrentSpeed * Time.deltaTime);
 
             if (_nextWaypointIndex >= _path.Count)
+            {
                 Finish();
+                return;
+            }
+
+            UpdateFacing(instant: false);
+        }
+
+        private void UpdateFacing(bool instant)
+        {
+            Vector2 direction = _path.GetPoint(_nextWaypointIndex) - transform.position;
+            if (direction.sqrMagnitude < 0.0001f) return;
+
+            switch (Config.FacingMode)
+            {
+                case EnemyFacingMode.RotateTowardsWaypoint:
+                {
+                    float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - Config.SpriteFacingAngle;
+                    float angle = instant || Config.TurnSpeed <= 0f
+                        ? targetAngle
+                        : Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetAngle, Config.TurnSpeed * Time.deltaTime);
+                    transform.rotation = Quaternion.Euler(0f, 0f, angle);
+                    break;
+                }
+                case EnemyFacingMode.FlipHorizontally:
+                {
+                    if (Mathf.Abs(direction.x) < 0.01f) break; // moving straight up/down: keep current look
+                    bool spriteLooksLeft = Mathf.Abs(Mathf.DeltaAngle(Config.SpriteFacingAngle, 180f)) < 90f;
+                    _spriteRenderer.flipX = (direction.x < 0f) != spriteLooksLeft;
+                    break;
+                }
+            }
         }
 
         private void Move(float distance)

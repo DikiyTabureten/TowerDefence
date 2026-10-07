@@ -21,7 +21,7 @@ namespace TowerDefense
         public float CurrentFireRate => _config.FireRate * _attackSpeed.Value;
         public float AttackSpeedMultiplier => _attackSpeed.Value;
 
-        protected override float GizmoRadius => _config.AttackRadius;
+        public override float Radius => _config != null ? _config.AttackRadius : 0f;
 
         protected override void OnInit(TowerConfig config, TowerContext context)
         {

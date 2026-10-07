@@ -50,8 +50,7 @@ namespace TowerDefense
             _projectilePool.Initialize();
             var towerContext = new TowerContext(_projectilePool, _enemyMask, _towerMask);
             var towerFactory = new TowerFactory(towerContext, _towersRoot);
-            var grid = new PlacementGrid(_gameConfig.GridCellSize);
-            var placementService = new TowerPlacementService(wallet, towerFactory, grid, _buildZoneMask);
+            var placementService = new TowerPlacementService(wallet, towerFactory, _buildZoneMask);
 
             // Shop (MVP)
             var shopModel = new TowerShopModel(_shopTowers);
