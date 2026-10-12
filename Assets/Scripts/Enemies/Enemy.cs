@@ -18,6 +18,9 @@ namespace TowerDefense
         public event Action<Enemy> ReachedFinish;
         public event Action<float, float> HealthChanged; // current, max
 
+        /// <summary>Raised with the new combined speed multiplier (1 = normal, below 1 = slowed).</summary>
+        public event Action<float> SpeedMultiplierChanged;
+
         public EnemyConfig Config { get; private set; }
         public float Health { get; private set; }
         public bool IsAlive => _isAlive;
@@ -25,12 +28,22 @@ namespace TowerDefense
         /// <summary>How far along the path this enemy is. Towers use it to target the enemy closest to the finish.</summary>
         public float DistanceTravelled { get; private set; }
 
+        /// <summary>Product of all speed modifiers currently applied (1 = no slow).</summary>
+        public float SpeedMultiplier => _speedModifiers.Value;
+
         public float CurrentSpeed => Config.MoveSpeed * _speedModifiers.Value;
 
         private void Awake()
         {
             if (_spriteRenderer == null)
                 _spriteRenderer = GetComponent<SpriteRenderer>();
+
+            _speedModifiers.Changed += OnSpeedModifiersChanged;
+        }
+
+        private void OnDestroy()
+        {
+            _speedModifiers.Changed -= OnSpeedModifiersChanged;
         }
 
         public void Init(EnemyConfig config, WaypointPath path)
@@ -145,6 +158,8 @@ namespace TowerDefense
             ReachedFinish?.Invoke(this);
             Destroy(gameObject);
         }
+
+        private void OnSpeedModifiersChanged(float value) => SpeedMultiplierChanged?.Invoke(value);
 
         // ISlowable
         public void AddSpeedModifier(object source, float multiplier) => _speedModifiers.Set(source, multiplier);

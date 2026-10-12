@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TowerDefense
@@ -31,6 +32,14 @@ namespace TowerDefense
         [SerializeField, Min(0f), Tooltip("Turn speed in degrees per second. 0 = turn instantly.")]
         private float _turnSpeed = 540f;
 
+        [Header("Animation (visual only)")]
+        [SerializeField, Tooltip("Walk cycle frames in order. Empty = the static Sprite is used.")]
+        private List<Sprite> _walkFrames = new List<Sprite>();
+        [SerializeField, Min(0.05f), Tooltip("World units travelled during one full walk cycle.")]
+        private float _distancePerCycle = 0.5f;
+        [SerializeField, Tooltip("Kick up dust while moving (e.g. the horseman).")]
+        private bool _emitsDust;
+
         public string DisplayName => _displayName;
         public float MaxHealth => _maxHealth;
         public float MoveSpeed => _moveSpeed;
@@ -40,5 +49,8 @@ namespace TowerDefense
         public EnemyFacingMode FacingMode => _facingMode;
         public float SpriteFacingAngle => _spriteFacingAngle;
         public float TurnSpeed => _turnSpeed;
+        public IReadOnlyList<Sprite> WalkFrames => _walkFrames;
+        public float DistancePerCycle => _distancePerCycle;
+        public bool EmitsDust => _emitsDust;
     }
 }

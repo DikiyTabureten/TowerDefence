@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _displayName: Tower_AttackSpeed
   _icon: {fileID: 1245529059417814140, guid: d4102c3d919f5ea42b6db1bafd5fd6c6, type: 3}
-  _sprite: {fileID: 21300000, guid: efe6360a407708b40a452187cdf2f890, type: 3}
+  _sprite: {fileID: 21300000, guid: c756e628aad5ab242b652e42260fa3e0, type: 3}
   _cost: 70
   _prefab: {fileID: -9184067341695259395, guid: bbc4763448af10346b199826e4af3190, type: 3}
   _effectRadius: 2

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace TowerDefense
     /// Each scan it compares "what is in range now" with "what was affected last time":
     /// newcomers get the effect, leavers lose it.
     /// </summary>
-    public abstract class AuraTower<TTarget> : Tower where TTarget : class
+    public abstract class AuraTower<TTarget> : Tower, IAuraTower where TTarget : class
     {
         private readonly List<Collider2D> _hits = new List<Collider2D>();
         private readonly HashSet<TTarget> _affected = new HashSet<TTarget>();
@@ -20,6 +21,10 @@ namespace TowerDefense
         private float _scanTimer;
 
         public override float Radius => _auraConfig != null ? _auraConfig.EffectRadius : 0f;
+
+        // IAuraTower (used by visuals)
+        public int AffectedCount => _affected.Count;
+        public event Action<int> AffectedCountChanged;
 
         protected abstract LayerMask GetTargetMask(TowerContext context);
         protected abstract void OnAuraInit(TowerConfig config);
@@ -50,6 +55,8 @@ namespace TowerDefense
 
         private void Scan()
         {
+            int countBefore = _affected.Count;
+
             CollectTargetsInRange();
 
             _leaving.Clear();
@@ -71,6 +78,9 @@ namespace TowerDefense
                 if (_affected.Add(target))
                     ApplyEffect(target);
             }
+
+            if (_affected.Count != countBefore)
+                AffectedCountChanged?.Invoke(_affected.Count);
         }
 
         private void CollectTargetsInRange()
@@ -98,13 +108,17 @@ namespace TowerDefense
                     RemoveEffect(target);
             }
 
+            bool hadTargets = _affected.Count > 0;
             _affected.Clear();
+
+            if (hadTargets)
+                AffectedCountChanged?.Invoke(0);
         }
 
         /// <summary>Unity objects can be destroyed while we still hold a reference to them.</summary>
         private static bool IsAlive(TTarget target)
         {
-            return !(target is Object unityObject) || unityObject != null;
+            return !(target is UnityEngine.Object unityObject) || unityObject != null;
         }
     }
 }

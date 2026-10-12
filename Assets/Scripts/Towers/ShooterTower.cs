@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,12 @@ namespace TowerDefense
         private ContactFilter2D _enemyFilter;
         private Enemy _target;
         private float _cooldown;
+
+        /// <summary>Raised right after a projectile is launched. Used by visuals (muzzle flash, recoil).</summary>
+        public event Action<Enemy> Fired;
+
+        /// <summary>The enemy the tower is currently aiming at, or null. Used by visuals to turn the turret.</summary>
+        public Enemy CurrentTarget => IsValidTarget(_target) ? _target : null;
 
         /// <summary>Shots per second after all attack speed buffs.</summary>
         public float CurrentFireRate => _config.FireRate * _attackSpeed.Value;
@@ -72,7 +79,8 @@ namespace TowerDefense
 
         private bool IsValidTarget(Enemy enemy)
         {
-            return enemy != null
+            return _config != null
+                && enemy != null
                 && enemy.IsAlive
                 && IsWithinRadius(transform.position, enemy.transform.position, _config.AttackRadius);
         }
@@ -84,6 +92,8 @@ namespace TowerDefense
             Projectile projectile = _projectilePool.Rent();
             projectile.transform.SetPositionAndRotation(origin, Quaternion.identity);
             projectile.Launch(target, _config.Damage, _config.ProjectileSpeed);
+
+            Fired?.Invoke(target);
         }
 
         // IAttackSpeedModifiable

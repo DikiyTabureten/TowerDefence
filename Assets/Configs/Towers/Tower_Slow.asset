@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _displayName: Tower_Slow
   _icon: {fileID: 4930550158216444929, guid: e8261d3ef06fb854e939fef3f09e0d8e, type: 3}
-  _sprite: {fileID: 21300000, guid: 9e0d2fc3b6032a24c9234c1d70f1e137, type: 3}
+  _sprite: {fileID: 21300000, guid: 6bf5d91166469434c9ab47da3ccca2f7, type: 3}
   _cost: 60
   _prefab: {fileID: 4263028628996040931, guid: 81a162f4c7bfee54f9a7b29fd5063d83, type: 3}
   _effectRadius: 2.5
