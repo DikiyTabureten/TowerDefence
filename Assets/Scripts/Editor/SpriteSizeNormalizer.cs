@@ -37,6 +37,9 @@ namespace TowerDefense.EditorTools
             public static Rule Ppu(string pathPrefix, float ppu) => new Rule(pathPrefix, 0f, ppu);
         }
 
+        // Visible size of a tower base (cannon_base: 59 px at PPU 64). Enemy sizes are relative to it.
+        private const float TowerSize = 59f / 64f;
+
         // Scale standard. The longest matching prefix wins.
         private static readonly Rule[] Rules =
         {
@@ -49,10 +52,10 @@ namespace TowerDefense.EditorTools
             Rule.Ppu("Assets/Sprites/Towers/Fast/trumpeter", 64f), // trumpeter_* and trumpeters_*
             Rule.Ppu("Assets/Sprites/Towers/Slow", 64f),
 
-            // Enemies are smaller than towers. All frames of one texture share one PPU.
-            Rule.Size("Assets/Sprites/Enemies/Base", 0.5f),  // swordsmen
-            Rule.Size("Assets/Sprites/Enemies/Tank", 0.65f), // heavy knight
-            Rule.Size("Assets/Sprites/Enemies/Fast", 0.75f), // horseman, by length
+            // Enemies, relative to a tower. All frames of one texture share one PPU.
+            Rule.Size("Assets/Sprites/Enemies/Base", TowerSize * 2f / 3f), // swordsmen
+            Rule.Size("Assets/Sprites/Enemies/Tank", TowerSize),           // heavy knight
+            Rule.Size("Assets/Sprites/Enemies/Fast", TowerSize * 2f / 3f), // horseman, by length
 
             // Slow ring drawn under an enemy.
             Rule.Size("Assets/Sprites/Towers/Slow/slow_status", 0.75f),
