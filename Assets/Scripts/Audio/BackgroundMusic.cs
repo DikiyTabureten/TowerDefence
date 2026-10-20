@@ -1,36 +1,40 @@
-using System;
 using UnityEngine;
 
 namespace TowerDefense
 {
     /// <summary>
-    /// Observer of tower placement: the background music starts (and loops) as soon as
-    /// the first War Orchestra is placed on the map. Plain class, created by Bootstrap.
+    /// One looping music source for the whole level. Every frame it asks a single question —
+    /// "is at least one War Orchestra on the map?" — and plays the music while the answer is yes.
+    /// Five orchestras still mean one AudioSource and one copy of the music;
+    /// if the last orchestra disappears, the music stops.
     /// </summary>
-    public sealed class BackgroundMusic : IDisposable
+    [RequireComponent(typeof(AudioSource))]
+    public sealed class BackgroundMusic : MonoBehaviour
     {
-        private readonly TowerPlacementService _placement;
-        private readonly AudioSource _source;
+        private AudioSource _source;
+        private Transform _towersRoot;
 
-        public BackgroundMusic(TowerPlacementService placement, AudioSource source)
+        /// <summary>The flag: true while the map has at least one orchestra.</summary>
+        public bool ShouldPlay { get; private set; }
+
+        private void Awake()
         {
-            _placement = placement ?? throw new ArgumentNullException(nameof(placement));
-            _source = source;
-            _placement.TowerPlaced += OnTowerPlaced;
+            _source = GetComponent<AudioSource>();
+            _source.loop = true;
+            _source.playOnAwake = false;
         }
 
-        public void Dispose() => _placement.TowerPlaced -= OnTowerPlaced;
+        /// <summary>Called by Bootstrap: towers are created under this parent by TowerFactory.</summary>
+        public void Init(Transform towersRoot) => _towersRoot = towersRoot;
 
-        private void OnTowerPlaced(Tower tower)
+        private void Update()
         {
-            if (!(tower is AttackSpeedAuraTower)) return;
+            if (_towersRoot == null) return;
 
-            _placement.TowerPlaced -= OnTowerPlaced; // only the first orchestra matters
-            if (_source != null && !_source.isPlaying)
-            {
-                _source.loop = true;
-                _source.Play();
-            }
+            ShouldPlay = _towersRoot.GetComponentInChildren<AttackSpeedAuraTower>() != null;
+
+            if (ShouldPlay && !_source.isPlaying) _source.Play();
+            else if (!ShouldPlay && _source.isPlaying) _source.Stop();
         }
     }
 }

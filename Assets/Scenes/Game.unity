@@ -649,6 +649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 243299401}
   - component: {fileID: 243299400}
+  - component: {fileID: 243299402}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -768,6 +769,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &243299402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243299399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5693a0de7921e74fa6448497d127f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &263219762
 GameObject:
   m_ObjectHideFlags: 0
@@ -6237,7 +6250,7 @@ MonoBehaviour:
   _shopView: {fileID: 352830003}
   _hudView: {fileID: 352829998}
   _soundToggleView: {fileID: 1530740065}
-  _musicSource: {fileID: 243299400}
+  _backgroundMusic: {fileID: 243299402}
 --- !u!4 &2123483272
 Transform:
   m_ObjectHideFlags: 0

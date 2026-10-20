@@ -45,12 +45,11 @@ namespace TowerDefense
         [SerializeField] private SoundToggleView _soundToggleView;
 
         [Header("Audio")]
-        [SerializeField, Tooltip("Looping background music, started by the first War Orchestra.")]
-        private AudioSource _musicSource;
+        [SerializeField, Tooltip("Looping background music, plays while at least one War Orchestra is on the map.")]
+        private BackgroundMusic _backgroundMusic;
 
         private TowerShopPresenter _shopPresenter;
         private SoundTogglePresenter _soundTogglePresenter;
-        private BackgroundMusic _backgroundMusic;
         private GameFlow _gameFlow;
         private EnemyOutcomeHandler _enemyOutcomes;
         private ResultPresenter _resultPresenter;
@@ -102,8 +101,8 @@ namespace TowerDefense
             _resultPresenter = new ResultPresenter(_hudView, _gameFlow, _catalog, levelIndex, new SceneNavigator());
             _resultPresenter.Initialize();
 
-            // Audio: music after the first orchestra, sound on/off switch (MVP)
-            _backgroundMusic = new BackgroundMusic(placementService, _musicSource);
+            // Audio: music while an orchestra is on the map, sound on/off switch (MVP)
+            if (_backgroundMusic != null) _backgroundMusic.Init(_towersRoot);
             if (_soundToggleView != null)
             {
                 _soundTogglePresenter = new SoundTogglePresenter(new SoundSettings(), _soundToggleView);
@@ -127,7 +126,6 @@ namespace TowerDefense
             _shopPresenter?.Dispose();
             _resultPresenter?.Dispose();
             _soundTogglePresenter?.Dispose();
-            _backgroundMusic?.Dispose();
 
             if (_gameFlow != null)
             {

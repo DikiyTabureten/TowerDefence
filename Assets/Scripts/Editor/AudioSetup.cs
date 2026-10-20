@@ -85,10 +85,12 @@ namespace TowerDefense.EditorTools
         {
             var scene = EditorSceneManager.OpenScene(GameScenePath);
 
-            // Background music: starts silent, BackgroundMusic plays it after the first orchestra.
+            // Background music: one source, BackgroundMusic plays it while an orchestra is on the map.
             GameObject musicGo = GameObject.Find("Music");
             if (musicGo == null) musicGo = new GameObject("Music", typeof(AudioSource));
             var music = musicGo.GetComponent<AudioSource>();
+            var backgroundMusic = musicGo.GetComponent<BackgroundMusic>();
+            if (backgroundMusic == null) backgroundMusic = musicGo.AddComponent<BackgroundMusic>();
             music.clip = AssetDatabase.LoadAssetAtPath<AudioClip>(MusicClipPath);
             music.playOnAwake = false;
             music.loop = true;
@@ -100,7 +102,7 @@ namespace TowerDefense.EditorTools
 
             var bootstrap = Object.FindFirstObjectByType<Bootstrap>();
             var so = new SerializedObject(bootstrap);
-            so.FindProperty("_musicSource").objectReferenceValue = music;
+            so.FindProperty("_backgroundMusic").objectReferenceValue = backgroundMusic;
             so.FindProperty("_soundToggleView").objectReferenceValue = toggle;
             so.ApplyModifiedPropertiesWithoutUndo();
 
