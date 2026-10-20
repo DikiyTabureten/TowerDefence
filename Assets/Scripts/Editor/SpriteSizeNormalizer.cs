@@ -57,12 +57,12 @@ namespace TowerDefense.EditorTools
             Rule.Size("Assets/Sprites/Enemies/Tank", TowerSize),           // heavy knight
             Rule.Size("Assets/Sprites/Enemies/Fast", TowerSize * 4f / 3f), // horseman, by length (long and thin, so twice the infantry)
 
-            // Slow ring drawn under an enemy.
-            Rule.Size("Assets/Sprites/Towers/Slow/slow_status", 0.75f),
+            // Slow ring drawn under an enemy: one cell, so it stays visible around the knight too.
+            Rule.Size("Assets/Sprites/Towers/Slow/slow_status", 1f),
         };
 
         [MenuItem(MenuPath)]
-        private static void Normalize() => Run(apply: true);
+        public static void Normalize() => Run(apply: true);
 
         [MenuItem(ReportMenuPath)]
         private static void Report() => Run(apply: false);

@@ -17,4 +17,18 @@ MonoBehaviour:
   _moveSpeed: 2
   _goldReward: 12
   _livesDamage: 1
-  _sprite: {fileID: 316800804578750379, guid: f3c08286ca91e7e4fa608802f6684037, type: 3}
+  _sprite: {fileID: -1322990432751829434, guid: 9cfa535de86e623438f7bc50bc82821c, type: 3}
+  _facingMode: 0
+  _spriteFacingAngle: 0
+  _turnSpeed: 540
+  _walkFrames:
+  - {fileID: -1322990432751829434, guid: 9cfa535de86e623438f7bc50bc82821c, type: 3}
+  - {fileID: 2120028099416780545, guid: 9cfa535de86e623438f7bc50bc82821c, type: 3}
+  - {fileID: 1262792163523298616, guid: 9cfa535de86e623438f7bc50bc82821c, type: 3}
+  - {fileID: -5011134216037558790, guid: 9cfa535de86e623438f7bc50bc82821c, type: 3}
+  - {fileID: 1656895715270488225, guid: 9cfa535de86e623438f7bc50bc82821c, type: 3}
+  - {fileID: -2877325432308094484, guid: 9cfa535de86e623438f7bc50bc82821c, type: 3}
+  - {fileID: -7096563739676281483, guid: 9cfa535de86e623438f7bc50bc82821c, type: 3}
+  - {fileID: -2759560626478667624, guid: 9cfa535de86e623438f7bc50bc82821c, type: 3}
+  _distancePerCycle: 0.61
+  _emitsDust: 0
