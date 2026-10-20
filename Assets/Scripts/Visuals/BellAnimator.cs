@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -35,6 +36,9 @@ namespace TowerDefense
         private Coroutine _swing;
         private float _tollTimer;
 
+        /// <summary>Raised on every toll, so other visuals (e.g. BellSound) stay in sync with the swing.</summary>
+        public event Action Tolled;
+
         private void Awake()
         {
             _aura = GetComponent<IAuraTower>();
@@ -69,6 +73,8 @@ namespace TowerDefense
 
             for (int i = 0; i < _waves.Length; i++)
                 StartCoroutine(WaveRoutine(_waves[i], i * _waveDelay, i == 0 ? 1f : 0.6f));
+
+            Tolled?.Invoke();
         }
 
         private IEnumerator SwingRoutine()
