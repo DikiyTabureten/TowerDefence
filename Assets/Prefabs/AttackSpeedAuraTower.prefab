@@ -5244,7 +5244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 0}
-  _rangeDisplay: 1
+  _rangeDisplay: 0
   _rangeColor: {r: 1, g: 1, b: 1, a: 0.5}
   _rangeLineWidth: 0.04
   _rangeSortingOrder: 5
