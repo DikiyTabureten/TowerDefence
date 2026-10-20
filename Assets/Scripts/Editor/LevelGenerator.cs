@@ -115,11 +115,10 @@ namespace TowerDefense.EditorTools
                 new[] { V(-1, 1), V(7, 1), V(7, 3), V(12, 3) });  // 1: southern road, joins at (7,3)
             SetCells(so.FindProperty("_buildSlots"),
                 V(1, 2), V(1, 4), V(2, 2), V(3, 4), V(4, 2), V(5, 2), V(5, 4),
-                V(6, 2), V(6, 4), V(8, 2), V(8, 4), V(9, 2), V(9, 4));
+                V(6, 2), V(6, 4), V(8, 2), V(8, 4), V(9, 2), V(9, 4),
+                V(11, 1), V(11, 2), V(11, 4), V(11, 5), V(11, 6)); // inside the castle, behind the wall
             SetTerrain(so,
                 (TerrainType.CastleWall, new RectInt(10, 0, 1, 7)), // the road through (10,3) is the gate
-                (TerrainType.Houses, new RectInt(11, 0, 1, 3)),
-                (TerrainType.Houses, new RectInt(11, 4, 1, 3)),
                 (TerrainType.Trees, new RectInt(0, 6, 4, 1)),
                 (TerrainType.Trees, new RectInt(5, 5, 4, 2)),
                 (TerrainType.Rocks, new RectInt(0, 3, 1, 1)));
