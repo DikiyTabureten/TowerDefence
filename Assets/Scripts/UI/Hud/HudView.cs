@@ -57,7 +57,7 @@ namespace TowerDefense
 
         public void ShowWave(int wave, int total)
         {
-            if (_waveText != null) _waveText.text = $"Wave {wave}/{total}";
+            if (_waveText != null) _waveText.text = $"{wave}/{total}"; // the swords icon says "wave"
         }
 
         /// <summary>Victory: "Next level" (if there is one) and "Menu".</summary>

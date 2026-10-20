@@ -98,6 +98,7 @@ namespace TowerDefense
 
             // HUD and result panel (MVP: next level / restart / menu)
             _hudView.Bind(wallet, lives);
+            _hudView.ShowWave(0, _level.Waves.Count); // "0/5" until the first wave starts
             _resultPresenter = new ResultPresenter(_hudView, _gameFlow, _catalog, levelIndex, new SceneNavigator());
             _resultPresenter.Initialize();
 
