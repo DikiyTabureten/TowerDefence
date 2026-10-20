@@ -66,6 +66,8 @@ namespace TowerDefense.Levels
 
         [Header("Layout")]
         [SerializeField] private List<PathData> _paths = new List<PathData>();
+        [SerializeField, Range(0f, 0.5f), Tooltip("Enemies walk random lanes up to this far (units) from the road's centre line.")]
+        private float _laneSpread = 0.35f;
         [SerializeField] private List<Vector2Int> _buildSlots = new List<Vector2Int>();
         [SerializeField] private List<TerrainArea> _terrain = new List<TerrainArea>();
 
@@ -83,6 +85,7 @@ namespace TowerDefense.Levels
         public Vector2Int GridSize => _gridSize;
         public float TileSize => _tileSize;
         public IReadOnlyList<PathData> Paths => _paths;
+        public float LaneSpread => _laneSpread * _tileSize;
         public IReadOnlyList<Vector2Int> BuildSlots => _buildSlots;
         public IReadOnlyList<TerrainArea> Terrain => _terrain;
         public int StartingGold => _startingGold;

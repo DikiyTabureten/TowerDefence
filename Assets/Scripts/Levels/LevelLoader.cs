@@ -65,7 +65,7 @@ namespace TowerDefense.Levels
                 var go = new GameObject($"Path_{i}");
                 go.transform.SetParent(_pathsRoot, false);
                 var path = go.AddComponent<WaypointPath>();
-                path.SetPoints(level.Paths[i].waypoints.Select(level.GridToWorld));
+                path.SetPoints(level.Paths[i].waypoints.Select(level.GridToWorld), level.LaneSpread);
                 paths.Add(path);
             }
             return paths;
