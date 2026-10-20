@@ -12,19 +12,18 @@ namespace TowerDefense
     public sealed class Bootstrap : MonoBehaviour
     {
         [Header("Configs")]
-        [SerializeField] private GameConfig _gameConfig;
-        [SerializeField] private List<TowerConfig> _shopTowers = new List<TowerConfig>();
-        [SerializeField, Tooltip("Map, enemy path and build zones are built from this asset.")]
+        [SerializeField, Tooltip("The level to play: map, roads, build zones, gold, lives and waves all come from it.")]
         private LevelConfig _level;
+        [SerializeField] private List<TowerConfig> _shopTowers = new List<TowerConfig>();
 
         [Header("Level")]
         [SerializeField] private MapBuilder _mapBuilder;
         [SerializeField] private BuildZone _buildZonePrefab;
         [SerializeField] private Transform _buildZonesRoot;
+        [SerializeField] private Transform _pathsRoot;
 
         [Header("Scene")]
         [SerializeField] private Camera _gameCamera;
-        [SerializeField] private WaypointPath _path;
         [SerializeField] private EnemySpawner _spawner;
         [SerializeField] private ProjectilePool _projectilePool;
         [SerializeField] private Transform _towersRoot;
@@ -45,17 +44,19 @@ namespace TowerDefense
         private TowerShopPresenter _shopPresenter;
         private GameFlow _gameFlow;
         private EnemyOutcomeHandler _enemyOutcomes;
+        private LoadedLevel _loadedLevel;
 
         private void Awake()
         {
             Time.timeScale = 1f;
 
-            // Level: map, enemy path and build zones from LevelConfig
-            new LevelLoader(_mapBuilder, _path, _buildZonePrefab, _buildZonesRoot).Load(_level);
+            // Level: map, roads, build zones and camera from LevelConfig
+            var levelLoader = new LevelLoader(_mapBuilder, _buildZonePrefab, _buildZonesRoot, _pathsRoot, _gameCamera);
+            _loadedLevel = levelLoader.Load(_level);
 
             // Economy
-            var wallet = new PlayerWallet(_gameConfig.StartingGold);
-            var lives = new PlayerLives(_gameConfig.StartingLives);
+            var wallet = new PlayerWallet(_level.StartingGold);
+            var lives = new PlayerLives(_level.StartingLives);
 
             // Towers & placement
             _projectilePool.Initialize();
@@ -70,7 +71,7 @@ namespace TowerDefense
 
             // Enemies
             _enemyOutcomes = new EnemyOutcomeHandler(wallet, lives);
-            _spawner.Init(new EnemyFactory(_enemyPrefab, _enemiesRoot), _path);
+            _spawner.Init(new EnemyFactory(_enemyPrefab, _enemiesRoot), _loadedLevel.Paths);
             _spawner.EnemySpawned += _enemyOutcomes.Register;
             _spawner.WaveStarted += _hudView.ShowWave;
 
@@ -84,7 +85,7 @@ namespace TowerDefense
 
         private void Start()
         {
-            _spawner.StartWaves();
+            _spawner.StartWaves(_level.Waves, _level.TimeBetweenWaves);
         }
 
         private void OnVictory()

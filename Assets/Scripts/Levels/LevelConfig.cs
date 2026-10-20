@@ -30,6 +30,25 @@ namespace TowerDefense.Levels
         }
 
         [Serializable]
+        public sealed class SpawnGroup
+        {
+            public EnemyConfig enemy;
+            [Min(1)] public int count = 5;
+            [Min(0f), Tooltip("Seconds between two enemies of this group.")]
+            public float spawnInterval = 1f;
+            [Min(0f), Tooltip("Seconds after the wave starts before this group begins. Groups of a wave run in parallel.")]
+            public float delayBeforeGroup;
+            [Min(0), Tooltip("Which road (index in Paths) the group walks.")]
+            public int pathIndex;
+        }
+
+        [Serializable]
+        public sealed class WaveData
+        {
+            public List<SpawnGroup> groups = new List<SpawnGroup>();
+        }
+
+        [Serializable]
         public sealed class TerrainArea
         {
             public TerrainType type;
@@ -55,8 +74,9 @@ namespace TowerDefense.Levels
         [SerializeField, Min(1)] private int _startingLives = 10;
 
         [Header("Waves")]
-        [SerializeField, Min(0f)] private float _timeBetweenWaves = 5f;
-        [SerializeField] private List<WaveConfig> _waves = new List<WaveConfig>();
+        [SerializeField, Min(0f), Tooltip("Pause before each wave, counted from the moment the previous wave finished spawning.")]
+        private float _timeBetweenWaves = 5f;
+        [SerializeField] private List<WaveData> _waves = new List<WaveData>();
 
         public string DisplayName => _displayName;
         public string Description => _description;
@@ -68,7 +88,7 @@ namespace TowerDefense.Levels
         public int StartingGold => _startingGold;
         public int StartingLives => _startingLives;
         public float TimeBetweenWaves => _timeBetweenWaves;
-        public IReadOnlyList<WaveConfig> Waves => _waves;
+        public IReadOnlyList<WaveData> Waves => _waves;
 
         /// <summary>World position of the grid's bottom-left corner. The grid is centred on (0, 0).</summary>
         public Vector3 Origin => new Vector3(-_gridSize.x * _tileSize * 0.5f, -_gridSize.y * _tileSize * 0.5f, 0f);
@@ -98,6 +118,47 @@ namespace TowerDefense.Levels
             Vector2Int last = points[points.Count - 1];
             AddSegment(cells, last, last + Direction(points[points.Count - 2], last) * extendEnds);
             return cells;
+        }
+
+        /// <summary>Layout mistakes that would break the level. Shown in the Console when the asset changes.</summary>
+        public List<string> Validate()
+        {
+            var problems = new List<string>();
+            var road = new HashSet<Vector2Int>();
+
+            if (_paths.Count == 0) problems.Add("no paths");
+            for (int p = 0; p < _paths.Count; p++)
+            {
+                List<Vector2Int> points = _paths[p].waypoints;
+                if (points.Count < 2) problems.Add($"path {p} needs at least two waypoints");
+                for (int i = 0; i < points.Count - 1; i++)
+                    if (points[i].x != points[i + 1].x && points[i].y != points[i + 1].y)
+                        problems.Add($"path {p}: segment {points[i]} -> {points[i + 1]} is diagonal");
+                if (points.Count >= 2) road.UnionWith(GetRoadCells(_paths[p]));
+            }
+
+            foreach (Vector2Int slot in _buildSlots)
+            {
+                if (!IsInsideGrid(slot)) problems.Add($"build slot {slot} is outside the grid");
+                if (road.Contains(slot)) problems.Add($"build slot {slot} is on the road");
+            }
+
+            for (int w = 0; w < _waves.Count; w++)
+            {
+                foreach (SpawnGroup group in _waves[w].groups)
+                {
+                    if (group.enemy == null) problems.Add($"wave {w + 1}: a group has no enemy");
+                    if (group.pathIndex >= _paths.Count) problems.Add($"wave {w + 1}: path index {group.pathIndex} does not exist");
+                }
+            }
+
+            return problems;
+        }
+
+        private void OnValidate()
+        {
+            foreach (string problem in Validate())
+                Debug.LogWarning($"[LevelConfig] {name}: {problem}", this);
         }
 
         private static Vector2Int Direction(Vector2Int from, Vector2Int to) =>

@@ -57,7 +57,8 @@ namespace TowerDefense.EditorTools
 
             BuildZone zonePrefab = GetOrCreateBuildZonePrefab();
             Transform zonesRoot = GetOrCreateRoot("BuildZones");
-            WireBootstrap(level, builder, zonePrefab, zonesRoot);
+            Transform pathsRoot = GetOrCreateRoot("Paths");
+            WireBootstrap(level, builder, zonePrefab, zonesRoot, pathsRoot);
             DisableManualBuildZones(zonesRoot);
 
             EditorSceneManager.MarkSceneDirty(map.scene);
@@ -101,7 +102,8 @@ namespace TowerDefense.EditorTools
             return root.transform;
         }
 
-        private static void WireBootstrap(LevelConfig level, MapBuilder builder, BuildZone zonePrefab, Transform zonesRoot)
+        private static void WireBootstrap(LevelConfig level, MapBuilder builder, BuildZone zonePrefab,
+            Transform zonesRoot, Transform pathsRoot)
         {
             var bootstrap = Object.FindFirstObjectByType<Bootstrap>();
             if (bootstrap == null)
@@ -111,10 +113,12 @@ namespace TowerDefense.EditorTools
             }
 
             var so = new SerializedObject(bootstrap);
-            so.FindProperty("_level").objectReferenceValue = level;
             so.FindProperty("_mapBuilder").objectReferenceValue = builder;
             so.FindProperty("_buildZonePrefab").objectReferenceValue = zonePrefab;
             so.FindProperty("_buildZonesRoot").objectReferenceValue = zonesRoot;
+            so.FindProperty("_pathsRoot").objectReferenceValue = pathsRoot;
+            if (so.FindProperty("_level").objectReferenceValue == null)
+                so.FindProperty("_level").objectReferenceValue = level;
             so.ApplyModifiedProperties();
         }
 

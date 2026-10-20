@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Level_01_VillageRoad
   m_EditorClassIdentifier: 
   _displayName: Village Road
-  _description: 'Tutorial: one winding road through a village.'
+  _description: 'Tutorial: one winding road through a village. Heavy knights arrive
+    in the last waves.'
   _gridSize: {x: 12, y: 7}
   _tileSize: 1
   _paths:
@@ -72,6 +73,58 @@ MonoBehaviour:
   _startingLives: 10
   _timeBetweenWaves: 5
   _waves:
-  - {fileID: 11400000, guid: aeb49b2c6f0c3f64fa4b8dcf4adb8098, type: 2}
-  - {fileID: 11400000, guid: 52b878ff69d6fa144a5ef839fa8b644d, type: 2}
-  - {fileID: 11400000, guid: 3935340154b6354468a27972d58d7042, type: 2}
+  - groups:
+    - enemy: {fileID: 11400000, guid: 99225714f5164ed4c9d41f5c9b3aece9, type: 2}
+      count: 6
+      spawnInterval: 1
+      delayBeforeGroup: 0
+      pathIndex: 0
+  - groups:
+    - enemy: {fileID: 11400000, guid: 99225714f5164ed4c9d41f5c9b3aece9, type: 2}
+      count: 8
+      spawnInterval: 0.9
+      delayBeforeGroup: 0
+      pathIndex: 0
+    - enemy: {fileID: 11400000, guid: 2c903041bd0adf54b9206149f5269d59, type: 2}
+      count: 4
+      spawnInterval: 0.6
+      delayBeforeGroup: 4
+      pathIndex: 0
+  - groups:
+    - enemy: {fileID: 11400000, guid: 2c903041bd0adf54b9206149f5269d59, type: 2}
+      count: 10
+      spawnInterval: 0.5
+      delayBeforeGroup: 0
+      pathIndex: 0
+    - enemy: {fileID: 11400000, guid: 99225714f5164ed4c9d41f5c9b3aece9, type: 2}
+      count: 5
+      spawnInterval: 1
+      delayBeforeGroup: 3
+      pathIndex: 0
+  - groups:
+    - enemy: {fileID: 11400000, guid: 99225714f5164ed4c9d41f5c9b3aece9, type: 2}
+      count: 8
+      spawnInterval: 0.8
+      delayBeforeGroup: 0
+      pathIndex: 0
+    - enemy: {fileID: 11400000, guid: 5dc416c8edcab2b419e933de9486c62c, type: 2}
+      count: 2
+      spawnInterval: 3
+      delayBeforeGroup: 5
+      pathIndex: 0
+  - groups:
+    - enemy: {fileID: 11400000, guid: 5dc416c8edcab2b419e933de9486c62c, type: 2}
+      count: 3
+      spawnInterval: 2.5
+      delayBeforeGroup: 0
+      pathIndex: 0
+    - enemy: {fileID: 11400000, guid: 2c903041bd0adf54b9206149f5269d59, type: 2}
+      count: 10
+      spawnInterval: 0.5
+      delayBeforeGroup: 2
+      pathIndex: 0
+    - enemy: {fileID: 11400000, guid: 99225714f5164ed4c9d41f5c9b3aece9, type: 2}
+      count: 8
+      spawnInterval: 0.8
+      delayBeforeGroup: 6
+      pathIndex: 0

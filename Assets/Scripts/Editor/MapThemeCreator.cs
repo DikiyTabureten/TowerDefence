@@ -81,6 +81,9 @@ namespace TowerDefense.EditorTools
             // Order matters: the first matching rule wins. "R" = road there, "X" = no road there.
             grass.m_TilingRules = new List<RuleTile.TilingRule>
             {
+                // Squeezed between two roads: the pack has no tile for that, so it becomes road too.
+                Rule(Road, (N, R), (S, R)),
+                Rule(Road, (E, R), (W, R)),
                 // Inner corners of a bend: road on two adjacent sides.
                 Rule(73, (N, R), (E, R), (S, X), (W, X)),
                 Rule(72, (N, R), (W, R), (S, X), (E, X)),
