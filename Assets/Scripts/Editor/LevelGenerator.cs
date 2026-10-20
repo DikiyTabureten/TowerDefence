@@ -58,7 +58,9 @@ namespace TowerDefense.EditorTools
                 gold: 150, lives: 10, timeBetweenWaves: 5f);
 
             SetPaths(so, new[] { V(-1, 4), V(3, 4), V(3, 2), V(8, 2), V(8, 5), V(12, 5) });
-            SetCells(so.FindProperty("_buildSlots"), V(2, 3), V(4, 3), V(6, 1), V(7, 3), V(9, 4), V(11, 4));
+            SetCells(so.FindProperty("_buildSlots"),
+                V(1, 3), V(2, 3), V(2, 5), V(4, 1), V(4, 3), V(5, 3), V(6, 1),
+                V(7, 3), V(7, 4), V(9, 3), V(9, 4), V(9, 6), V(11, 4));
             SetTerrain(so,
                 (TerrainType.Trees, new RectInt(0, 5, 2, 2)),
                 (TerrainType.Trees, new RectInt(4, 5, 3, 2)),
@@ -83,7 +85,9 @@ namespace TowerDefense.EditorTools
                 gold: 175, lives: 10, timeBetweenWaves: 4f);
 
             SetPaths(so, new[] { V(-1, 5), V(6, 5), V(6, 2), V(12, 2) });
-            SetCells(so.FindProperty("_buildSlots"), V(2, 4), V(4, 4), V(3, 6), V(5, 3), V(7, 4), V(8, 3), V(10, 3));
+            SetCells(so.FindProperty("_buildSlots"),
+                V(1, 4), V(2, 4), V(3, 6), V(4, 4), V(5, 2), V(5, 3), V(5, 6),
+                V(7, 3), V(7, 4), V(8, 3), V(9, 3), V(10, 3), V(11, 3));
             SetTerrain(so,
                 (TerrainType.Water, new RectInt(0, 0, 12, 2)),
                 (TerrainType.Trees, new RectInt(8, 5, 4, 2)),
@@ -109,7 +113,9 @@ namespace TowerDefense.EditorTools
             SetPaths(so,
                 new[] { V(-1, 5), V(4, 5), V(4, 3), V(12, 3) },   // 0: northern road
                 new[] { V(-1, 1), V(7, 1), V(7, 3), V(12, 3) });  // 1: southern road, joins at (7,3)
-            SetCells(so.FindProperty("_buildSlots"), V(2, 2), V(3, 4), V(5, 4), V(6, 2), V(8, 2), V(8, 4), V(9, 4));
+            SetCells(so.FindProperty("_buildSlots"),
+                V(1, 2), V(1, 4), V(2, 2), V(3, 4), V(4, 2), V(5, 2), V(5, 4),
+                V(6, 2), V(6, 4), V(8, 2), V(8, 4), V(9, 2), V(9, 4));
             SetTerrain(so,
                 (TerrainType.CastleWall, new RectInt(10, 0, 1, 7)), // the road through (10,3) is the gate
                 (TerrainType.Houses, new RectInt(11, 0, 1, 3)),
