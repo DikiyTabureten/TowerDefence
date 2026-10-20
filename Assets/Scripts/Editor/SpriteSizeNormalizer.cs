@@ -45,6 +45,7 @@ namespace TowerDefense.EditorTools
         {
             // Map: 64x64 Kenney tiles, one tile = one cell.
             Rule.Ppu("Assets/Sprites/Map", 64f),
+            Rule.Ppu("Assets/Sprites/Map/Retina", 128f), // the same tiles at 128x128, used by MapTheme
 
             // Towers: 256 px canvas, the base (~230 px visible) fills ~0.9 of a cell.
             // Every part of a tower uses the same PPU as its base, so local offsets stay valid.

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba931972a1bb18748a4b050cfc9bad2a, type: 3}
+  m_Name: MapTheme_Default
+  m_EditorClassIdentifier: 
+  grass: {fileID: 11400000, guid: f1920a05e039d934aa2612d3879b9da5, type: 2}
+  road: {fileID: 11400000, guid: cf36000e595039e45aa1a4f7329dea45, type: 2}
+  water: {fileID: 11400000, guid: ee3a6863e54cc48438c938b4d5cb3b24, type: 2}
+  buildSlot: {fileID: 11400000, guid: 6ea6ea8d1d7770b4a8a8c6a51f68c9f8, type: 2}
+  trees:
+  - {fileID: 11400000, guid: 1f7f9d4e3cc0ad04bac6073232d52a4a, type: 2}
+  - {fileID: 11400000, guid: ba588a7d1e45d9d429b2b0c549a6f1dd, type: 2}
+  rocks:
+  - {fileID: 11400000, guid: 5e907c07f0a776e4eb595b6e3a5068d2, type: 2}
+  - {fileID: 11400000, guid: 556edda7785858c449872434ef20ec39, type: 2}
+  - {fileID: 11400000, guid: ca88a9da912f86949901fac9167263d9, type: 2}
+  house: {fileID: 11400000, guid: 19143258f3c3f2d47ad83bcaf8bbf331, type: 2}
+  castleWall: {fileID: 11400000, guid: a74bf399dd6f0924a8f798f31513d6f2, type: 2}
