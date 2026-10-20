@@ -117,8 +117,8 @@ namespace TowerDefense.EditorTools
             so.FindProperty("_buildZonePrefab").objectReferenceValue = zonePrefab;
             so.FindProperty("_buildZonesRoot").objectReferenceValue = zonesRoot;
             so.FindProperty("_pathsRoot").objectReferenceValue = pathsRoot;
-            if (so.FindProperty("_level").objectReferenceValue == null)
-                so.FindProperty("_level").objectReferenceValue = level;
+            if (so.FindProperty("_defaultLevel").objectReferenceValue == null)
+                so.FindProperty("_defaultLevel").objectReferenceValue = level;
             so.ApplyModifiedProperties();
         }
 

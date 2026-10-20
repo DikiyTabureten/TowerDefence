@@ -12,8 +12,10 @@ namespace TowerDefense
     public sealed class Bootstrap : MonoBehaviour
     {
         [Header("Configs")]
-        [SerializeField, Tooltip("The level to play: map, roads, build zones, gold, lives and waves all come from it.")]
-        private LevelConfig _level;
+        [SerializeField, Tooltip("All levels in order. The menu's choice is an index into this list.")]
+        private LevelCatalog _catalog;
+        [SerializeField, Tooltip("Played when the Game scene is started directly (no choice from the menu).")]
+        private LevelConfig _defaultLevel;
         [SerializeField] private List<TowerConfig> _shopTowers = new List<TowerConfig>();
 
         [Header("Level")]
@@ -44,11 +46,20 @@ namespace TowerDefense
         private TowerShopPresenter _shopPresenter;
         private GameFlow _gameFlow;
         private EnemyOutcomeHandler _enemyOutcomes;
+        private ResultPresenter _resultPresenter;
+        private LevelConfig _level;
         private LoadedLevel _loadedLevel;
 
         private void Awake()
         {
             Time.timeScale = 1f;
+
+            // Which level: the menu's choice, or the default one when the scene is started directly
+            _level = LevelSelection.HasSelection && _catalog != null
+                ? _catalog.Get(LevelSelection.SelectedIndex)
+                : null;
+            if (_level == null) _level = _defaultLevel;
+            int levelIndex = _catalog != null ? _catalog.IndexOf(_level) : -1;
 
             // Level: map, roads, build zones and camera from LevelConfig
             var levelLoader = new LevelLoader(_mapBuilder, _buildZonePrefab, _buildZonesRoot, _pathsRoot, _gameCamera);
@@ -77,10 +88,12 @@ namespace TowerDefense
 
             // Win / lose
             _gameFlow = new GameFlow(_spawner, _enemyOutcomes, lives);
-            _gameFlow.Victory += OnVictory;
             _gameFlow.Defeat += OnDefeat;
 
+            // HUD and result panel (MVP: next level / restart / menu)
             _hudView.Bind(wallet, lives);
+            _resultPresenter = new ResultPresenter(_hudView, _gameFlow, _catalog, levelIndex, new SceneNavigator());
+            _resultPresenter.Initialize();
         }
 
         private void Start()
@@ -88,25 +101,19 @@ namespace TowerDefense
             _spawner.StartWaves(_level.Waves, _level.TimeBetweenWaves);
         }
 
-        private void OnVictory()
-        {
-            _hudView.ShowVictory();
-        }
-
         private void OnDefeat()
         {
             _spawner.Stop();
-            _hudView.ShowDefeat();
             Time.timeScale = 0f;
         }
 
         private void OnDestroy()
         {
             _shopPresenter?.Dispose();
+            _resultPresenter?.Dispose();
 
             if (_gameFlow != null)
             {
-                _gameFlow.Victory -= OnVictory;
                 _gameFlow.Defeat -= OnDefeat;
                 _gameFlow.Dispose();
             }
