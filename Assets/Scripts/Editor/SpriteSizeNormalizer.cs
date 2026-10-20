@@ -55,7 +55,7 @@ namespace TowerDefense.EditorTools
             // Enemies, relative to a tower. All frames of one texture share one PPU.
             Rule.Size("Assets/Sprites/Enemies/Base", TowerSize * 2f / 3f), // swordsmen
             Rule.Size("Assets/Sprites/Enemies/Tank", TowerSize),           // heavy knight
-            Rule.Size("Assets/Sprites/Enemies/Fast", TowerSize * 2f / 3f), // horseman, by length
+            Rule.Size("Assets/Sprites/Enemies/Fast", TowerSize * 4f / 3f), // horseman, by length (long and thin, so twice the infantry)
 
             // Slow ring drawn under an enemy.
             Rule.Size("Assets/Sprites/Towers/Slow/slow_status", 0.75f),
