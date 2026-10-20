@@ -103,12 +103,12 @@ TextureImporter:
       name: note_quarter_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 1
-        width: 19
-        height: 29
+        x: 16
+        y: 4
+        width: 76
+        height: 116
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -123,14 +123,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 18611bb2ed054c344b9a1b2da11cfad0
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      note_quarter_0: -5923223501745474984
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

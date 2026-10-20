@@ -37,8 +37,8 @@ namespace TowerDefense.EditorTools
             public static Rule Ppu(string pathPrefix, float ppu) => new Rule(pathPrefix, 0f, ppu);
         }
 
-        // Visible size of a tower base (cannon_base: 59 px at PPU 64). Enemy sizes are relative to it.
-        private const float TowerSize = 59f / 64f;
+        // Visible size of a tower base (cannon_base: 234 px at PPU 256). Enemy sizes are relative to it.
+        private const float TowerSize = 234f / 256f;
 
         // Scale standard. The longest matching prefix wins.
         private static readonly Rule[] Rules =
@@ -46,11 +46,11 @@ namespace TowerDefense.EditorTools
             // Map: 64x64 Kenney tiles, one tile = one cell.
             Rule.Ppu("Assets/Sprites/Map", 64f),
 
-            // Towers: 64 px canvas, the base (~58 px visible) fills ~0.9 of a cell.
+            // Towers: 256 px canvas, the base (~230 px visible) fills ~0.9 of a cell.
             // Every part of a tower uses the same PPU as its base, so local offsets stay valid.
-            Rule.Ppu("Assets/Sprites/Towers/Attack", 64f),
-            Rule.Ppu("Assets/Sprites/Towers/Fast/trumpeter", 64f), // trumpeter_* and trumpeters_*
-            Rule.Ppu("Assets/Sprites/Towers/Slow", 64f),
+            Rule.Ppu("Assets/Sprites/Towers/Attack", 256f),
+            Rule.Ppu("Assets/Sprites/Towers/Fast/trumpeter", 256f), // trumpeter_* and trumpeters_*
+            Rule.Ppu("Assets/Sprites/Towers/Slow", 256f),
 
             // Enemies, relative to a tower. All frames of one texture share one PPU.
             Rule.Size("Assets/Sprites/Enemies/Base", TowerSize * 2f / 3f), // swordsmen

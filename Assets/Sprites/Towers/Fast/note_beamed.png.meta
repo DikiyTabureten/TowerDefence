@@ -103,12 +103,12 @@ TextureImporter:
       name: note_beamed_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 30
-        height: 29
+        x: 4
+        y: 4
+        width: 120
+        height: 116
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -123,14 +123,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b47ede2928494774199c641ab0bd238d
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      note_beamed_0: -1972813971537227032
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
