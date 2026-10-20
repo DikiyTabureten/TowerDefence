@@ -8,7 +8,9 @@ namespace TowerDefense.EditorTools
 {
     /// <summary>
     /// Adds the map to the open scene: a "Map" Grid with three Tilemaps and a MapBuilder,
-    /// then builds level 1 with the default theme. Re-running reuses the existing objects.
+    /// then builds level 1 with the default theme. Also prepares level loading at runtime:
+    /// the BuildZone prefab, a "BuildZones" parent and the Bootstrap references.
+    /// Re-running reuses the existing objects.
     /// The map is drawn below everything else (negative Order in Layer); gameplay sprites use 0 and above.
     /// </summary>
     public static class MapSceneSetup
@@ -16,6 +18,7 @@ namespace TowerDefense.EditorTools
         private const string MenuPath = "Tools/Tower Defense/Setup Map In Scene";
         private const string LevelPath = "Assets/Configs/Levels/Level_01_VillageRoad.asset";
         private const string ThemePath = "Assets/Configs/MapTheme_Default.asset";
+        private const string BuildZonePrefabPath = "Assets/Prefabs/BuildZone.prefab";
 
         // Sorting orders: ground < build slots < decoration < build zones (-1), enemies (0), towers, projectiles.
         private const int GroundOrder = -30;
@@ -52,9 +55,82 @@ namespace TowerDefense.EditorTools
 
             builder.Build();
 
+            BuildZone zonePrefab = GetOrCreateBuildZonePrefab();
+            Transform zonesRoot = GetOrCreateRoot("BuildZones");
+            WireBootstrap(level, builder, zonePrefab, zonesRoot);
+            DisableManualBuildZones(zonesRoot);
+
             EditorSceneManager.MarkSceneDirty(map.scene);
             EditorSceneManager.SaveScene(map.scene);
             Debug.Log($"[MapSceneSetup] Map built for '{level.DisplayName}' and scene saved.", map);
+        }
+
+        /// <summary>
+        /// Invisible build zone: just the collider on the BuildZone layer. The slot is shown by the
+        /// stone pad the MapBuilder draws on the BuildSlots tilemap, so the zone needs no sprite.
+        /// </summary>
+        private static BuildZone GetOrCreateBuildZonePrefab()
+        {
+            var existing = AssetDatabase.LoadAssetAtPath<BuildZone>(BuildZonePrefabPath);
+            if (existing != null) return existing;
+
+            var go = new GameObject("BuildZone");
+            try
+            {
+                go.layer = LayerMask.NameToLayer("BuildZone");
+                var box = go.AddComponent<BoxCollider2D>();
+                box.size = Vector2.one;
+                box.isTrigger = true;
+                go.AddComponent<BuildZone>();
+                return PrefabUtility.SaveAsPrefabAsset(go, BuildZonePrefabPath).GetComponent<BuildZone>();
+            }
+            finally
+            {
+                Object.DestroyImmediate(go);
+            }
+        }
+
+        private static Transform GetOrCreateRoot(string name)
+        {
+            GameObject root = GameObject.Find(name);
+            if (root == null)
+            {
+                root = new GameObject(name);
+                Undo.RegisterCreatedObjectUndo(root, $"Create {name}");
+            }
+            return root.transform;
+        }
+
+        private static void WireBootstrap(LevelConfig level, MapBuilder builder, BuildZone zonePrefab, Transform zonesRoot)
+        {
+            var bootstrap = Object.FindFirstObjectByType<Bootstrap>();
+            if (bootstrap == null)
+            {
+                Debug.LogWarning("[MapSceneSetup] No Bootstrap in the scene: assign Level, Map Builder and Build Zone fields by hand.");
+                return;
+            }
+
+            var so = new SerializedObject(bootstrap);
+            so.FindProperty("_level").objectReferenceValue = level;
+            so.FindProperty("_mapBuilder").objectReferenceValue = builder;
+            so.FindProperty("_buildZonePrefab").objectReferenceValue = zonePrefab;
+            so.FindProperty("_buildZonesRoot").objectReferenceValue = zonesRoot;
+            so.ApplyModifiedProperties();
+        }
+
+        /// <summary>
+        /// Zones placed by hand in the scene would still accept towers at old positions.
+        /// They are only switched off (not deleted), so nothing is lost.
+        /// </summary>
+        private static void DisableManualBuildZones(Transform zonesRoot)
+        {
+            foreach (BuildZone zone in Object.FindObjectsByType<BuildZone>(FindObjectsSortMode.None))
+            {
+                if (zone.transform.IsChildOf(zonesRoot)) continue;
+                Undo.RecordObject(zone.gameObject, "Disable manual build zone");
+                zone.gameObject.SetActive(false);
+                Debug.Log($"[MapSceneSetup] Disabled manual build zone '{zone.name}' (zones now come from LevelConfig).", zone);
+            }
         }
 
         private static GameObject CreateGrid()

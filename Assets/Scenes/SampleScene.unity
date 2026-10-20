@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &98530280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3606,7 +3606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &542901739
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4296,7 +4296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &962153513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5011,6 +5011,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698933407}
   m_CullTransparentMesh: 1
+--- !u!1 &1814550767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1814550768}
+  m_Layer: 0
+  m_Name: BuildZones
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1814550768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814550767}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1910649850
 GameObject:
   m_ObjectHideFlags: 0
@@ -5381,6 +5412,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 04507d0c8c4197c468b41311371917a3, type: 2}
   - {fileID: 11400000, guid: 8e97a09f62cd4fb449bcd96a4a635c0c, type: 2}
   - {fileID: 11400000, guid: afc13e4bdad1f344eb3fb4b5dac5b3cd, type: 2}
+  _level: {fileID: 11400000, guid: 8e5360946d3d5eb4298ad5602d4f1fc5, type: 2}
+  _mapBuilder: {fileID: 1449753179}
+  _buildZonePrefab: {fileID: 7364820871937591663, guid: 327a6585b677b1548966110a842a9c0b, type: 3}
+  _buildZonesRoot: {fileID: 1814550768}
   _gameCamera: {fileID: 519420031}
   _path: {fileID: 394640289}
   _spawner: {fileID: 1039030074}
@@ -5432,3 +5467,4 @@ SceneRoots:
   - {fileID: 1949554003}
   - {fileID: 2123483272}
   - {fileID: 1449753181}
+  - {fileID: 1814550768}

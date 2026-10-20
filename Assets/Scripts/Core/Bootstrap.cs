@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TowerDefense.Levels;
 using UnityEngine;
 
 namespace TowerDefense
@@ -13,6 +14,13 @@ namespace TowerDefense
         [Header("Configs")]
         [SerializeField] private GameConfig _gameConfig;
         [SerializeField] private List<TowerConfig> _shopTowers = new List<TowerConfig>();
+        [SerializeField, Tooltip("Map, enemy path and build zones are built from this asset.")]
+        private LevelConfig _level;
+
+        [Header("Level")]
+        [SerializeField] private MapBuilder _mapBuilder;
+        [SerializeField] private BuildZone _buildZonePrefab;
+        [SerializeField] private Transform _buildZonesRoot;
 
         [Header("Scene")]
         [SerializeField] private Camera _gameCamera;
@@ -41,6 +49,9 @@ namespace TowerDefense
         private void Awake()
         {
             Time.timeScale = 1f;
+
+            // Level: map, enemy path and build zones from LevelConfig
+            new LevelLoader(_mapBuilder, _path, _buildZonePrefab, _buildZonesRoot).Load(_level);
 
             // Economy
             var wallet = new PlayerWallet(_gameConfig.StartingGold);
