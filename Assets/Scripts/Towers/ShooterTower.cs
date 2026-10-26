@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace TowerDefense
 {
+    /// <summary>
+    /// Fires on the notes of the level's music (BeatConductor.NoteHit) instead of a cooldown.
+    /// Fire rate and attack speed buffs still matter: they decide how many notes pass between shots.
+    /// </summary>
     public sealed class ShooterTower : Tower, IAttackSpeedModifiable
     {
         [SerializeField, Tooltip("Where projectiles spawn. Defaults to the tower's position.")]
@@ -16,7 +20,7 @@ namespace TowerDefense
         private ProjectilePool _projectilePool;
         private ContactFilter2D _enemyFilter;
         private Enemy _target;
-        private float _cooldown;
+        private BeatConductor _conductor;
 
         /// <summary>Raised right after a projectile is launched. Used by visuals (muzzle flash, recoil).</summary>
         public event Action<Enemy> Fired;
@@ -28,6 +32,19 @@ namespace TowerDefense
         public float CurrentFireRate => _config.FireRate * _attackSpeed.Value;
         public float AttackSpeedMultiplier => _attackSpeed.Value;
 
+        /// <summary>
+        /// Shoot on every N-th note. N = notes per second / shots per second, rounded to 1, 2, 4, 8…
+        /// so the shots stay on the beat. Faster fire rate (e.g. the Orchestra's buff) = smaller N.
+        /// </summary>
+        public int NotesPerShot
+        {
+            get
+            {
+                if (_conductor == null || _conductor.Track == null || CurrentFireRate <= 0f) return 1;
+                return Mathf.Max(1, Mathf.ClosestPowerOfTwo(Mathf.RoundToInt(_conductor.Track.NotesPerSecond / CurrentFireRate)));
+            }
+        }
+
         public override float Radius => _config != null ? _config.AttackRadius : 0f;
 
         protected override void OnInit(TowerConfig config, TowerContext context)
@@ -38,22 +55,35 @@ namespace TowerDefense
             _enemyFilter = new ContactFilter2D { useTriggers = true };
             _enemyFilter.SetLayerMask(context.EnemyMask);
 
-            _cooldown = 0f;
+            _conductor = context.Conductor;
+            if (_conductor != null)
+                _conductor.NoteHit += OnNoteHit;
+            else
+                Debug.LogError("ShooterTower: no BeatConductor in TowerContext — the tower will not fire. Assign it in Bootstrap.", this);
+        }
+
+        private void OnDestroy()
+        {
+            if (_conductor != null) _conductor.NoteHit -= OnNoteHit;
         }
 
         private void Update()
         {
+            // Only keeps the target up to date; shots happen on notes (OnNoteHit).
             if (_config == null) return;
 
-            _cooldown = Mathf.Max(0f, _cooldown - Time.deltaTime);
+            if (!IsValidTarget(_target))
+                _target = FindTarget();
+        }
+
+        private void OnNoteHit(int noteIndex, RhythmNote note)
+        {
+            if (_config == null || noteIndex % NotesPerShot != 0) return;
 
             if (!IsValidTarget(_target))
                 _target = FindTarget();
 
-            if (_target == null || _cooldown > 0f) return;
-
-            Fire(_target);
-            _cooldown = 1f / CurrentFireRate;
+            if (_target != null) Fire(_target); // no target: this note is skipped
         }
 
         private Enemy FindTarget()

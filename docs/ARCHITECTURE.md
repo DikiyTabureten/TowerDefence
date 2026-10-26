@@ -268,6 +268,19 @@ Tower (abstract MonoBehaviour: Init(config, context) → OnInit, Radius, RangeIn
 
 ---
 
+### 6.9. Ритм: пушки стреляют на ноты (`Scripts/Rhythm`, `Scripts/Editor/Rhythm`)
+
+| Класс | Ответственность |
+|---|---|
+| `RhythmTrackConfig` (SO) | Клип, BPM, смещение первой ноты, длина цикла в битах (0 = из длины клипа), ноты `RhythmNote` (бит, высота, сила), паттерн для ручного режима. Ноты хранятся в битах, поэтому смена BPM не ломает ритм. `NotesPerSecond` — среднее число нот в секунду за цикл |
+| `BeatConductor` | На объекте Music: запускает клип через `PlayScheduled`, время берёт только из `AudioSettings.dspTime`, в `Update` в цикле `while` выдаёт все наступившие ноты (`NoteHit(globalIndex, note)`), чтобы при долгом кадре ни одна не потерялась. `Pause`/`Resume` сдвигают стартовое dsp-время; пауза вызывается при поражении |
+| `ShooterTower` | Стреляет не по кулдауну, а на каждой `NotesPerShot`-й ноте: `NotesPerShot = ClosestPowerOfTwo(round(NotesPerSecond / CurrentFireRate))`, поэтому выстрелы остаются в долю, а баф оркестра уменьшает шаг. Анимация и звук по-прежнему слушают `Fired` |
+| `BackgroundMusic` | Тот же объект Music: только громкость (плавно открывает, пока на карте есть оркестр). Звук не останавливает, чтобы ритм не сбивался |
+| Editor: `RhythmTrackConfigEditor` | Кнопки **Bake from Pattern**, **Import MIDI…**, **Analyze Audio Clip…** и таймлайн цикла |
+| Editor: `MidiFileReader`, `MidiImportWindow` | Свой парсер Standard MIDI File (форматы 0/1, running status, темп, размер, имя трека, пропуск SysEx) и окно выбора трека/канала |
+| Editor: `AudioOnsetAnalyzer`, `AudioAnalysisWindow` | Свой FFT, spectral flux, адаптивный порог, оценка BPM автокорреляцией, квантизация |
+| Editor: `RhythmSetup` | `Tools/Tower Defense/Setup Rhythm`: демо-трек и `BeatConductor` на сцене |
+
 ## 7. Паттерны проектирования
 
 | Паттерн | Где | Зачем |

@@ -9,11 +9,15 @@ namespace TowerDefense
         public LayerMask EnemyMask { get; }
         public LayerMask TowerMask { get; }
 
-        public TowerContext(ProjectilePool projectilePool, LayerMask enemyMask, LayerMask towerMask)
+        /// <summary>Beat of the level's music: shooter towers fire on its notes.</summary>
+        public BeatConductor Conductor { get; }
+
+        public TowerContext(ProjectilePool projectilePool, LayerMask enemyMask, LayerMask towerMask, BeatConductor conductor)
         {
             ProjectilePool = projectilePool;
             EnemyMask = enemyMask;
             TowerMask = towerMask;
+            Conductor = conductor;
         }
     }
 }

@@ -45,7 +45,9 @@ namespace TowerDefense
         [SerializeField] private SoundToggleView _soundToggleView;
 
         [Header("Audio")]
-        [SerializeField, Tooltip("Looping background music, plays while at least one War Orchestra is on the map.")]
+        [SerializeField, Tooltip("Plays the level's rhythm track; shooter towers fire on its notes.")]
+        private BeatConductor _beatConductor;
+        [SerializeField, Tooltip("Fades the music in while at least one War Orchestra is on the map.")]
         private BackgroundMusic _backgroundMusic;
 
         private TowerShopPresenter _shopPresenter;
@@ -77,7 +79,7 @@ namespace TowerDefense
 
             // Towers & placement
             _projectilePool.Initialize();
-            var towerContext = new TowerContext(_projectilePool, _enemyMask, _towerMask);
+            var towerContext = new TowerContext(_projectilePool, _enemyMask, _towerMask, _beatConductor);
             var towerFactory = new TowerFactory(towerContext, _towersRoot);
             var placementService = new TowerPlacementService(wallet, towerFactory, _buildZoneMask);
 
@@ -120,6 +122,7 @@ namespace TowerDefense
         {
             _spawner.Stop();
             Time.timeScale = 0f;
+            if (_beatConductor != null) _beatConductor.Pause(); // the audio clock ignores timeScale
         }
 
         private void OnDestroy()

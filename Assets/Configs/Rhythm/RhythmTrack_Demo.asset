@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07cd1af1425b235498beddce2beb4511, type: 3}
+  m_Name: RhythmTrack_Demo
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 9a50c18e94aba424195dccc270cbebfa, type: 3}
+  _bpm: 120
+  _firstNoteOffset: 0
+  _loopLengthBeats: 4
+  _notes:
+  - Beat: 0
+    Pitch: 0
+    Velocity: 1
+  - Beat: 0.5
+    Pitch: 0
+    Velocity: 1
+  - Beat: 1
+    Pitch: 0
+    Velocity: 1
+  - Beat: 1.5
+    Pitch: 0
+    Velocity: 1
+  - Beat: 1.75
+    Pitch: 0
+    Velocity: 1
+  - Beat: 2
+    Pitch: 0
+    Velocity: 1
+  - Beat: 2.5
+    Pitch: 0
+    Velocity: 1
+  - Beat: 3
+    Pitch: 0
+    Velocity: 1
+  - Beat: 3.5
+    Pitch: 0
+    Velocity: 1
+  _sourceInfo: Pattern "x.x.x.xxx.x.x.x." (16 steps, 4 per beat), baked 2026-10-26
+    18:27
+  _pattern: x.x.x.xxx.x.x.x.
+  _stepsPerBeat: 4
