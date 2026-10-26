@@ -1072,8 +1072,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2125a6953f47d1c43a4af48e76d74f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _track: {fileID: 11400000, guid: 7c57aa3fb48a9494db2882c929361ba1, type: 2}
+  _track: {fileID: 11400000, guid: 904e6bfa4fdafcc4daa649b56df2112b, type: 2}
   _startDelay: 0.1
+  _lookAhead: 0.1
   _debugLog: 0
 --- !u!1 &263219762
 GameObject:
@@ -6319,6 +6320,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698933407}
   m_CullTransparentMesh: 1
+--- !u!1 &1715329057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1715329059}
+  - component: {fileID: 1715329058}
+  m_Layer: 0
+  m_Name: ShotNotePlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1715329058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715329057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60e2d34d6b0edc41bee6b5e3aec6c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: f16978efd94f22c4c8d8dea30397b04b, type: 2}
+  _debugLog: 0
+--- !u!4 &1715329059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715329057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1814550767
 GameObject:
   m_ObjectHideFlags: 0
@@ -7198,6 +7245,7 @@ MonoBehaviour:
   _hudView: {fileID: 352829998}
   _soundToggleView: {fileID: 1530740065}
   _beatConductor: {fileID: 243299403}
+  _shotNotePlayer: {fileID: 1715329058}
   _backgroundMusic: {fileID: 243299402}
 --- !u!4 &2123483272
 Transform:
@@ -7232,3 +7280,4 @@ SceneRoots:
   - {fileID: 1814550768}
   - {fileID: 1824023453}
   - {fileID: 243299401}
+  - {fileID: 1715329059}

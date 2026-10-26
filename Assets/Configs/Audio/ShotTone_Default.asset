@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0e2b21e0e53a84395c4c62d777065e, type: 3}
+  m_Name: ShotTone_Default
+  m_EditorClassIdentifier: 
+  _samples:
+  - Clip: {fileID: 8300000, guid: c8cc726612e094f48865ddd2510ea62f, type: 3}
+    RootMidi: 60
+  _boomClip: {fileID: 8300000, guid: 64f0647e03bc75e4295990528f59b421, type: 3}
+  _toneVolume: 0.8
+  _boomVolume: 0.6
+  _stackGain: 0.3
+  _minMidi: 48
+  _maxMidi: 72
+  _transposeSemitones: 0
+  _unpitchedMidi: 60
+  _maxVoices: 16

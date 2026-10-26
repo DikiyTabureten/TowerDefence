@@ -280,6 +280,11 @@ Tower (abstract MonoBehaviour: Init(config, context) → OnInit, Radius, RangeIn
 | Editor: `MidiFileReader`, `MidiImportWindow` | Свой парсер Standard MIDI File (форматы 0/1, running status, темп, размер, имя трека, пропуск SysEx) и окно выбора трека/канала |
 | Editor: `AudioOnsetAnalyzer`, `AudioAnalysisWindow` | Свой FFT, spectral flux, адаптивный порог, оценка BPM автокорреляцией, квантизация |
 | Editor: `RhythmSetup` | `Tools/Tower Defense/Setup Rhythm`: демо-трек и `BeatConductor` на сцене |
+| `BeatConductor.NoteUpcoming` | За `LookAhead` (0.1 с) до ноты сообщает её точное dsp-время, чтобы звук можно было запланировать без опоздания на кадр. Клип музыки необязателен: без него дирижёр идёт по аудиочасам, а мелодию играют только пушки |
+| `ShotToneConfig` (SO) | Тональный сэмпл (или несколько, мультисэмплинг) с нотой записи, «бум» выстрела, громкости, диапазон нот (вне него — перенос на октаву), транспонирование, нота для нот без высоты, размер пула голосов |
+| `IShotNoteSink` / `ShotNotePlayer` | `Schedule(noteIndex, note, dspTime)`: один звук на ноту (тон, сдвинутый на нужную высоту, + бум), запланированный `PlayScheduled` на точное время. Если на эту ноту стреляют несколько пушек, звук один и только громче. Голоса — `ObjectPool<ShotVoice>`; при нехватке забирается тот, что закончится раньше всех |
+| `ShooterTower` + ноты | На `NoteUpcoming` решает, стрелять ли (каждая `NotesPerShot`-я нота и есть цель), и планирует звук через `TowerContext.ShotSounds`; на `NoteHit` выпускает снаряд. Старый `CannonSound` на префабе выключен |
+| Editor: `CannonMelodySetup` | `Tools/Tower Defense/Setup Cannon Melody`: импорт тонального слоя, `ShotTone_Default`, трек из MIDI, объект `ShotNotePlayer` на сцене |
 
 ## 7. Паттерны проектирования
 

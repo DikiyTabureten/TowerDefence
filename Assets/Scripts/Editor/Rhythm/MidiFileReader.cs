@@ -39,7 +39,10 @@ namespace TowerDefense.EditorTools.Rhythm
         public bool HasTimeSignature;
 
         /// <summary>BPM of the first tempo event (120 if the file has none).</summary>
-        public float Bpm => Tempos.Count > 0 ? 60_000_000f / Tempos[0].microsecondsPerQuarter : 120f;
+        /// <remarks>Rounded to 0.01: tempo is stored in whole microseconds, so 140 BPM reads back as 140.0001.</remarks>
+        public float Bpm => Tempos.Count > 0
+            ? (float)Math.Round(60_000_000.0 / Tempos[0].microsecondsPerQuarter, 2)
+            : 120f;
 
         public bool HasTempoChanges
         {

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07cd1af1425b235498beddce2beb4511, type: 3}
+  m_Name: RhythmTrack_Korobeiniki
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 0}
+  _bpm: 140
+  _firstNoteOffset: 0
+  _loopLengthBeats: 16
+  _notes:
+  - Beat: 0
+    Pitch: 64
+    Velocity: 0.78740156
+  - Beat: 1
+    Pitch: 59
+    Velocity: 0.78740156
+  - Beat: 1.5
+    Pitch: 60
+    Velocity: 0.78740156
+  - Beat: 2
+    Pitch: 62
+    Velocity: 0.78740156
+  - Beat: 3
+    Pitch: 60
+    Velocity: 0.78740156
+  - Beat: 3.5
+    Pitch: 59
+    Velocity: 0.78740156
+  - Beat: 4
+    Pitch: 57
+    Velocity: 0.78740156
+  - Beat: 5
+    Pitch: 57
+    Velocity: 0.78740156
+  - Beat: 5.5
+    Pitch: 60
+    Velocity: 0.78740156
+  - Beat: 6
+    Pitch: 64
+    Velocity: 0.78740156
+  - Beat: 7
+    Pitch: 62
+    Velocity: 0.78740156
+  - Beat: 7.5
+    Pitch: 60
+    Velocity: 0.78740156
+  - Beat: 8
+    Pitch: 59
+    Velocity: 0.78740156
+  - Beat: 9.5
+    Pitch: 60
+    Velocity: 0.78740156
+  - Beat: 10
+    Pitch: 62
+    Velocity: 0.78740156
+  - Beat: 11
+    Pitch: 64
+    Velocity: 0.78740156
+  - Beat: 12
+    Pitch: 60
+    Velocity: 0.78740156
+  - Beat: 13
+    Pitch: 57
+    Velocity: 0.78740156
+  - Beat: 14
+    Pitch: 57
+    Velocity: 0.78740156
+  _sourceInfo: 'MIDI: Korobeiniki_test.mid, "Korobeiniki" channel 1, imported 2026-10-26
+    19:04'
+  _pattern: x.x.x.xxx.x.x.x.
+  _stepsPerBeat: 4

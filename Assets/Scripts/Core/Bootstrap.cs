@@ -47,6 +47,8 @@ namespace TowerDefense
         [Header("Audio")]
         [SerializeField, Tooltip("Plays the level's rhythm track; shooter towers fire on its notes.")]
         private BeatConductor _beatConductor;
+        [SerializeField, Tooltip("Plays every cannon shot as a note of the melody.")]
+        private ShotNotePlayer _shotNotePlayer;
         [SerializeField, Tooltip("Fades the music in while at least one War Orchestra is on the map.")]
         private BackgroundMusic _backgroundMusic;
 
@@ -79,7 +81,8 @@ namespace TowerDefense
 
             // Towers & placement
             _projectilePool.Initialize();
-            var towerContext = new TowerContext(_projectilePool, _enemyMask, _towerMask, _beatConductor);
+            IShotNoteSink shotSounds = _shotNotePlayer != null ? _shotNotePlayer : null; // real null if unassigned
+            var towerContext = new TowerContext(_projectilePool, _enemyMask, _towerMask, _beatConductor, shotSounds);
             var towerFactory = new TowerFactory(towerContext, _towersRoot);
             var placementService = new TowerPlacementService(wallet, towerFactory, _buildZoneMask);
 

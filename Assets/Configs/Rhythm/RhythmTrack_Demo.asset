@@ -13,38 +13,1109 @@ MonoBehaviour:
   m_Name: RhythmTrack_Demo
   m_EditorClassIdentifier: 
   _clip: {fileID: 8300000, guid: 9a50c18e94aba424195dccc270cbebfa, type: 3}
-  _bpm: 120
+  _bpm: 67.00003
   _firstNoteOffset: 0
-  _loopLengthBeats: 4
+  _loopLengthBeats: 260
   _notes:
-  - Beat: 0
-    Pitch: 0
-    Velocity: 1
-  - Beat: 0.5
-    Pitch: 0
-    Velocity: 1
-  - Beat: 1
-    Pitch: 0
-    Velocity: 1
-  - Beat: 1.5
-    Pitch: 0
-    Velocity: 1
-  - Beat: 1.75
-    Pitch: 0
-    Velocity: 1
-  - Beat: 2
-    Pitch: 0
-    Velocity: 1
-  - Beat: 2.5
-    Pitch: 0
-    Velocity: 1
-  - Beat: 3
-    Pitch: 0
-    Velocity: 1
-  - Beat: 3.5
-    Pitch: 0
-    Velocity: 1
-  _sourceInfo: Pattern "x.x.x.xxx.x.x.x." (16 steps, 4 per beat), baked 2026-10-26
-    18:27
+  - Beat: 4.5
+    Pitch: 54
+    Velocity: 0.68503934
+  - Beat: 4.75
+    Pitch: 54
+    Velocity: 0.51968503
+  - Beat: 5.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 5.75
+    Pitch: 54
+    Velocity: 0.43307087
+  - Beat: 6.5
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 7.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 16.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 16.453125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 16.703125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 17.203125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 18.203125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 18.453125
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 18.703125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 19.203125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 20.203125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 20.453125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 20.703125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 21.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 22.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 22.453125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 22.703125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 23.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 24.203125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 24.453125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 24.703125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 25.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 26.203125
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 26.453125
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 26.703125
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 27.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 28.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 28.453125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 28.703125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 29.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 30.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 30.453125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 30.703125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 31.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 32.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 32.453125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 32.703125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 33.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 34.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 34.453125
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 34.703125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 35.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 36.203125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 36.453125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 36.703125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 37.203125
+    Pitch: 54
+    Velocity: 0.93700784
+  - Beat: 38.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 38.453125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 38.703125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 39.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 40.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 40.453125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 40.703125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 41.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 42.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 42.453125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 42.703125
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 43.203125
+    Pitch: 54
+    Velocity: 0.93700784
+  - Beat: 44.203125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 44.453125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 44.703125
+    Pitch: 54
+    Velocity: 0.93700784
+  - Beat: 45.203125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 51
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 52
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 52.25
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 53
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 54
+    Pitch: 54
+    Velocity: 0.48818898
+  - Beat: 54.25
+    Pitch: 54
+    Velocity: 0.37795275
+  - Beat: 55
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 56
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 56.25
+    Pitch: 54
+    Velocity: 0.51968503
+  - Beat: 57
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 58
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 58.25
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 59
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 60
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 60.25
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 61
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 62
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 62.25
+    Pitch: 54
+    Velocity: 0.4566929
+  - Beat: 63
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 64
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 65
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 66
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 66.25
+    Pitch: 54
+    Velocity: 0.4566929
+  - Beat: 67
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 68
+    Pitch: 54
+    Velocity: 0.48818898
+  - Beat: 68.25
+    Pitch: 54
+    Velocity: 0.51968503
+  - Beat: 69
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 70
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 71
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 71.25
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 72
+    Pitch: 54
+    Velocity: 0.4566929
+  - Beat: 72.25
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 73
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 74
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 75
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 75.25
+    Pitch: 54
+    Velocity: 0.51968503
+  - Beat: 76
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 76.25
+    Pitch: 54
+    Velocity: 0.43307087
+  - Beat: 77
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 78
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 87.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 87.453125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 87.703125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 88.203125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 89.203125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 89.453125
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 89.703125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 90.203125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 91.203125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 91.453125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 91.703125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 92.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 93.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 93.453125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 93.703125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 94.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 95.203125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 95.453125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 95.703125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 96.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 97.203125
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 97.453125
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 97.703125
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 98.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 99.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 99.453125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 99.703125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 100.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 101.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 101.453125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 101.703125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 102.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 103.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 103.453125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 103.703125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 104.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 105.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 105.453125
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 105.703125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 106.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 107.203125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 107.453125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 107.703125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 108.203125
+    Pitch: 54
+    Velocity: 0.93700784
+  - Beat: 109.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 109.453125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 109.703125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 110.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 111.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 111.453125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 111.703125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 112.203125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 113.203125
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 113.453125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 113.703125
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 114.203125
+    Pitch: 54
+    Velocity: 0.93700784
+  - Beat: 115.203125
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 115.453125
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 115.703125
+    Pitch: 54
+    Velocity: 0.93700784
+  - Beat: 116.203125
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 121.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 122.5
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 122.75
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 123.5
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 124.5
+    Pitch: 54
+    Velocity: 0.48818898
+  - Beat: 124.75
+    Pitch: 54
+    Velocity: 0.37795275
+  - Beat: 125.5
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 126.5
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 126.75
+    Pitch: 54
+    Velocity: 0.51968503
+  - Beat: 127.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 128.5
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 128.75
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 129.5
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 130.5
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 130.75
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 131.5
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 132.5
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 132.75
+    Pitch: 54
+    Velocity: 0.4566929
+  - Beat: 133.5
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 134.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 135.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 136.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 136.75
+    Pitch: 54
+    Velocity: 0.4566929
+  - Beat: 137.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 138.5
+    Pitch: 54
+    Velocity: 0.48818898
+  - Beat: 138.75
+    Pitch: 54
+    Velocity: 0.51968503
+  - Beat: 139.5
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 140.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 141.5
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 141.75
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 142.5
+    Pitch: 54
+    Velocity: 0.4566929
+  - Beat: 142.75
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 143.5
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 144.5
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 145.5
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 145.75
+    Pitch: 54
+    Velocity: 0.51968503
+  - Beat: 146.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 146.75
+    Pitch: 54
+    Velocity: 0.43307087
+  - Beat: 147.5
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 148.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 157.25
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 157.5
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 157.75
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 158.25
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 159.25
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 159.5
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 159.75
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 160.25
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 161.25
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 161.5
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 161.75
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 162.25
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 163.25
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 163.5
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 163.75
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 164.25
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 165.25
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 165.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 165.75
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 166.25
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 167.25
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 167.5
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 167.75
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 168.25
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 169.25
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 169.5
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 169.75
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 170.25
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 171.25
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 171.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 171.75
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 172.25
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 173.25
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 173.5
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 173.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 174.25
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 175.25
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 175.5
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 175.75
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 176.25
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 177.25
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 177.5
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 177.75
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 178.25
+    Pitch: 54
+    Velocity: 0.93700784
+  - Beat: 179.25
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 179.5
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 179.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 180.25
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 181.25
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 181.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 181.75
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 182.25
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 183.25
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 183.5
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 183.75
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 184.25
+    Pitch: 54
+    Velocity: 0.93700784
+  - Beat: 185.25
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 185.5
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 185.75
+    Pitch: 54
+    Velocity: 0.93700784
+  - Beat: 186.25
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 191.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 192.75
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 193
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 193.75
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 194.75
+    Pitch: 54
+    Velocity: 0.48818898
+  - Beat: 195
+    Pitch: 54
+    Velocity: 0.37795275
+  - Beat: 195.75
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 196.75
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 197
+    Pitch: 54
+    Velocity: 0.51968503
+  - Beat: 197.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 198.75
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 199
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 199.75
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 200.75
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 201
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 201.75
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 202.75
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 203
+    Pitch: 54
+    Velocity: 0.4566929
+  - Beat: 203.75
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 204.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 205.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 206.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 207
+    Pitch: 54
+    Velocity: 0.4566929
+  - Beat: 207.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 208.75
+    Pitch: 54
+    Velocity: 0.48818898
+  - Beat: 209
+    Pitch: 54
+    Velocity: 0.51968503
+  - Beat: 209.75
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 210.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 211.75
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 212
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 212.75
+    Pitch: 54
+    Velocity: 0.4566929
+  - Beat: 213
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 213.75
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 214.75
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 215.75
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 216
+    Pitch: 54
+    Velocity: 0.51968503
+  - Beat: 216.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 217
+    Pitch: 54
+    Velocity: 0.43307087
+  - Beat: 217.75
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 218.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 227.5
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 227.75
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 228
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 228.5
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 229.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 229.75
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 230
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 230.5
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 231.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 231.75
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 232
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 232.5
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 233.5
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 233.75
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 234
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 234.5
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 235.5
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 235.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 236
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 236.5
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 237.5
+    Pitch: 54
+    Velocity: 0.5590551
+  - Beat: 237.75
+    Pitch: 54
+    Velocity: 0.6771653
+  - Beat: 238
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 238.5
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 239.5
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 239.75
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 240
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 240.5
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 241.5
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 241.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 242
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 242.5
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 243.5
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 243.75
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 244
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 244.5
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 245.5
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 245.75
+    Pitch: 54
+    Velocity: 0.5905512
+  - Beat: 246
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 246.5
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 247.5
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 247.75
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 248
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 248.5
+    Pitch: 54
+    Velocity: 0.93700784
+  - Beat: 249.5
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 249.75
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 250
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 250.5
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 251.5
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 251.75
+    Pitch: 54
+    Velocity: 0.71653545
+  - Beat: 252
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 252.5
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 253.5
+    Pitch: 54
+    Velocity: 0.87401575
+  - Beat: 253.75
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 254
+    Pitch: 54
+    Velocity: 0.62992126
+  - Beat: 254.5
+    Pitch: 54
+    Velocity: 0.93700784
+  - Beat: 255.5
+    Pitch: 54
+    Velocity: 0.77165353
+  - Beat: 255.75
+    Pitch: 54
+    Velocity: 0.81889766
+  - Beat: 256
+    Pitch: 54
+    Velocity: 0.93700784
+  - Beat: 256.5
+    Pitch: 54
+    Velocity: 0.71653545
+  _sourceInfo: 'MIDI: kalinka.mid, "Track 13" channel 10 (drums), imported 2026-10-26
+    18:39'
   _pattern: x.x.x.xxx.x.x.x.
   _stepsPerBeat: 4

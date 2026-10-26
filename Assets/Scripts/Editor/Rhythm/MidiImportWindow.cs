@@ -48,8 +48,7 @@ namespace TowerDefense.EditorTools.Rhythm
             window._config = config;
             window._file = file;
             window._fileName = Path.GetFileName(path);
-            // Default: the part with the most notes.
-            window._selected = file.Parts.IndexOf(file.Parts.OrderByDescending(p => p.Notes.Count).First());
+            window._selected = file.Parts.IndexOf(DefaultPart(file));
             window.minSize = new Vector2(460f, 260f);
             window.ShowUtility();
         }
@@ -91,15 +90,26 @@ namespace TowerDefense.EditorTools.Rhythm
                 if (GUILayout.Button("Cancel", GUILayout.Width(90f))) Close();
                 if (GUILayout.Button("Import", GUILayout.Width(90f)))
                 {
-                    Import(_file.Parts[_selected]);
+                    ImportPart(_config, _file, _file.Parts[_selected], _fileName);
                     Close();
                 }
             }
         }
 
-        private void Import(MidiPart part)
+        /// <summary>The part with the most notes — chosen by default.</summary>
+        public static MidiPart DefaultPart(MidiFile file) => file.Parts.OrderByDescending(p => p.Notes.Count).First();
+
+        /// <summary>Reads a MIDI file and imports its default part without showing the window (used by setup tools).</summary>
+        public static void ImportFile(RhythmTrackConfig config, string path)
         {
-            int tpq = _file.TicksPerQuarter;
+            MidiFile file = MidiFileReader.Read(File.ReadAllBytes(path));
+            if (file.Parts.Count == 0) throw new FormatException($"'{path}' has no notes.");
+            ImportPart(config, file, DefaultPart(file), Path.GetFileName(path));
+        }
+
+        public static void ImportPart(RhythmTrackConfig config, MidiFile file, MidiPart part, string fileName)
+        {
+            int tpq = file.TicksPerQuarter;
             var notes = new List<RhythmNote>();
             long mergeTicks = Math.Max(1, (long)Math.Round(tpq * ChordMergeBeats));
 
@@ -115,16 +125,16 @@ namespace TowerDefense.EditorTools.Rhythm
 
             // Loop = end of the last note, rounded up to a whole bar.
             float lastEndBeats = part.Notes.Max(n => Math.Max(n.EndTick, n.StartTick)) / (float)tpq;
-            float bar = _file.BeatsPerBar;
+            float bar = file.BeatsPerBar;
             float loopBeats = Mathf.Max(bar, Mathf.Ceil(lastEndBeats / bar - 0.0001f) * bar);
 
-            string source = $"MIDI: {_fileName}, \"{part.TrackName}\" channel {part.Channel + 1}" +
+            string source = $"MIDI: {fileName}, \"{part.TrackName}\" channel {part.Channel + 1}" +
                             $"{(part.IsDrums ? " (drums)" : "")}, imported {DateTime.Now:yyyy-MM-dd HH:mm}";
 
-            Undo.RecordObject(_config, "Import MIDI");
-            _config.SetNotes(notes, _file.Bpm, loopBeats, 0f, source);
-            EditorUtility.SetDirty(_config);
-            Debug.Log($"[Rhythm] Imported {notes.Count} notes from {_fileName} at {_file.Bpm:0.##} BPM, loop {loopBeats} beats.", _config);
+            Undo.RecordObject(config, "Import MIDI");
+            config.SetNotes(notes, file.Bpm, loopBeats, 0f, source);
+            EditorUtility.SetDirty(config);
+            Debug.Log($"[Rhythm] Imported {notes.Count} notes from {fileName} at {file.Bpm:0.##} BPM, loop {loopBeats} beats.", config);
         }
 
         private static readonly string[] Names = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };

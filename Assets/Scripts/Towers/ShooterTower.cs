@@ -21,6 +21,8 @@ namespace TowerDefense
         private ContactFilter2D _enemyFilter;
         private Enemy _target;
         private BeatConductor _conductor;
+        private IShotNoteSink _shotSounds;
+        private int _scheduledNoteIndex = -1; // note this tower decided to shoot on (sound already scheduled)
 
         /// <summary>Raised right after a projectile is launched. Used by visuals (muzzle flash, recoil).</summary>
         public event Action<Enemy> Fired;
@@ -55,16 +57,24 @@ namespace TowerDefense
             _enemyFilter = new ContactFilter2D { useTriggers = true };
             _enemyFilter.SetLayerMask(context.EnemyMask);
 
+            _shotSounds = context.ShotSounds;
             _conductor = context.Conductor;
             if (_conductor != null)
+            {
+                _conductor.NoteUpcoming += OnNoteUpcoming;
                 _conductor.NoteHit += OnNoteHit;
+            }
             else
+            {
                 Debug.LogError("ShooterTower: no BeatConductor in TowerContext — the tower will not fire. Assign it in Bootstrap.", this);
+            }
         }
 
         private void OnDestroy()
         {
-            if (_conductor != null) _conductor.NoteHit -= OnNoteHit;
+            if (_conductor == null) return;
+            _conductor.NoteUpcoming -= OnNoteUpcoming;
+            _conductor.NoteHit -= OnNoteHit;
         }
 
         private void Update()
@@ -76,14 +86,33 @@ namespace TowerDefense
                 _target = FindTarget();
         }
 
-        private void OnNoteHit(int noteIndex, RhythmNote note)
+        /// <summary>
+        /// Just before a note: decide whether to shoot on it, and if so schedule the shot's sound
+        /// at the note's exact audio time (so the melody is not late by a frame).
+        /// </summary>
+        private void OnNoteUpcoming(int noteIndex, RhythmNote note, double dspTime)
         {
             if (_config == null || noteIndex % NotesPerShot != 0) return;
 
             if (!IsValidTarget(_target))
                 _target = FindTarget();
+            if (_target == null) return; // no target: this note is skipped
 
-            if (_target != null) Fire(_target); // no target: this note is skipped
+            _scheduledNoteIndex = noteIndex;
+            _shotSounds?.Schedule(noteIndex, note, dspTime);
+        }
+
+        /// <summary>The note's time has come: fire the projectile if this tower decided to shoot on it.</summary>
+        private void OnNoteHit(int noteIndex, RhythmNote note)
+        {
+            if (_config == null || noteIndex != _scheduledNoteIndex) return;
+            _scheduledNoteIndex = -1;
+
+            // The target may have died or left in the last ~100 ms.
+            if (!IsValidTarget(_target))
+                _target = FindTarget();
+
+            if (_target != null) Fire(_target); // no enemies at all: the sound already plays, no projectile
         }
 
         private Enemy FindTarget()

@@ -12,12 +12,17 @@ namespace TowerDefense
         /// <summary>Beat of the level's music: shooter towers fire on its notes.</summary>
         public BeatConductor Conductor { get; }
 
-        public TowerContext(ProjectilePool projectilePool, LayerMask enemyMask, LayerMask towerMask, BeatConductor conductor)
+        /// <summary>Plays the sound of a shot as a note of the melody, at an exact time. May be null (silent shots).</summary>
+        public IShotNoteSink ShotSounds { get; }
+
+        public TowerContext(ProjectilePool projectilePool, LayerMask enemyMask, LayerMask towerMask,
+            BeatConductor conductor, IShotNoteSink shotSounds)
         {
             ProjectilePool = projectilePool;
             EnemyMask = enemyMask;
             TowerMask = towerMask;
             Conductor = conductor;
+            ShotSounds = shotSounds;
         }
     }
 }
